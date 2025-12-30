@@ -1,0 +1,56 @@
+# Initialize ChatGroq with a specific model
+# llm = ChatGroq(
+#   api_key=os.getenv("GROQ_API_KEY"),
+#   model=os.getenv("MODEL_NAME", "llama-3-8b-instant"),
+#   temperature=0.7, # creativity level
+# )
+#
+# messages = [
+#   {
+#     "role": "system",
+#     "content": SYSTEM_PROMPT
+#   },
+#   # Few-shot example 1 ---
+#   {
+#     "role": "user",
+#     "content": "Create a simple drum pattern."
+#   },
+#   {
+#     "role": "assistant",
+#     "content": """
+#       ```javascript
+#         // bd = bass drum
+#         // sd = snare drum
+#         // rim = rimshot
+#         // hh = hihat
+#         // oh = open hihat
+#         // lt = low tom
+#         // mt = middle tom
+#         // ht = high tom
+#         // rd = ride cymbal
+#         // cr = crash cymbal
+#         sound("bd hh sd oh").bank("RolandTR909")
+#       ```
+#     """
+#   },
+#   # Few-shot example 2 ---
+#   {
+#     "role": "user",
+#     "content": "Create alternate sound speed by 8 pattern."
+#   },
+#   {
+#     "role": "assistant",
+#     "content": """
+#       ```javascript
+#         // cpm = cycles per minute
+#         // By default, the tempo is 30 cycles per minute = 120/4 = 1 cycle every 2 seconds
+#         setcpm(90/4)
+#         sound("<bd hh rim hh>*8")
+#       ```
+#     """
+#   },
+#   {
+#     "role": "user",
+#     "content": query
+#   }
+# ]
