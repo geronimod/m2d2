@@ -1,13 +1,18 @@
-# Python Env
-
-Conda:
-- conda create -n mbot python=3.11
-- conda activate mbot
-
-Install dependencies:
-- pip install langgraph langchain langchain_community langchain-groq
+# M2D2
+Claude based [Strudel](https://strudel.cc) ai generator.
 
 # 🧠 Tidal = pattern language
 # 🎛 SuperCollider = sound synthesis
 
-# m2d2
+# O.S Dependencies
+
+- ffmpeg
+
+# Python Env
+
+Conda:
+- conda create -n m2d2 python=3.11
+- conda activate m2d2
+
+Install dependencies:
+- pip install anthropic

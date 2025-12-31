@@ -7,53 +7,41 @@
       <title>Strudel REPL</title>
     </head>
     <body>
-      <strudel-repl>
-        <!-- // Set tempo for house/techno feel
-setcpm(128/4)
+      <strudel-repl autoplay="true" style="width: 100%; height: 100vh;">
+        <!-- // Classic house music pattern with 4/4 kick, bassline, and synths
+setcpm(125/4) // 125 BPM house tempo
 
-// Main funky drum pattern with house kick
 stack(
-  // Four-on-the-floor house kick
+  // Four-on-the-floor kick drum pattern
   sound("bd*4").bank("RolandTR909"),
   
-  // Funky snare on 2 and 4 with ghost notes
-  sound("~ sd ~ sd").add(sound("~ ~ sd ~").gain(0.3)).bank("RolandTR909"),
+  // Classic house hi-hat pattern with open hats on off-beats
+  sound("~ hh ~ hh").bank("RolandTR909"),
   
-  // Techno hi-hats with swing
-  sound("hh*8").gain("[0.8 0.4]*4").bank("RolandTR909"),
+  // Snare on beats 2 and 4
+  sound("~ sd ~ sd").bank("RolandTR909"),
   
-  // Open hat accents
-  sound("~ ~ oh ~").gain(0.6).bank("RolandTR909")
-)
-
-// Funky bassline with house progression
-stack(
-  // Main bass pattern
-  note("C2 ~ C2 Eb2 ~ F2 ~ G2").s("sawtooth").lpf(800).gain(0.7),
+  // Funky bassline with classic house progression
+  note("c2 ~ c2 eb2 ~ f2 ~ g2")
+    .sound("sawtooth")
+    .lpf(800)
+    .resonance(5)
+    .gain(0.6),
   
-  // Sub bass reinforcement
-  note("C1*2 Eb1*2").s("sine").gain(0.4)
-)
-
-// Techno lead synth
-stack(
-  // Arpeggiated techno lead
-  note("<C4 Eb4 F4 G4>*2").s("square").lpf(1200).delay(0.25).gain(0.5),
+  // House piano stabs on off-beats
+  note("c4 eb4 g4 bb4")
+    .sound("piano")
+    .struct("~ x ~ x")
+    .gain(0.4)
+    .room(0.3),
   
-  // House chord stabs
-  note("<[C4,Eb4,G4] ~ [F4,A4,C5] ~>").s("sawtooth").attack(0.01).release(0.1).gain(0.6)
-)
-
-// Percussion fills and variations
-stack(
-  // Claps for house feel
-  sound("~ ~ cp ~").bank("RolandTR909").delay(0.125).gain(0.4),
-  
-  // Ride for groove
-  sound("rd*2 ~ rd ~").gain(0.3).bank("RolandTR909"),
-  
-  // Crash on phrase changes
-  sound("cr ~ ~ ~ ~ ~ ~ ~").gain(0.8).bank("RolandTR909")
+  // Sweeping synth pad
+  note("c3 eb3 g3")
+    .sound("sawtooth")
+    .lpf(sine.range(400, 1200).slow(8))
+    .gain(0.3)
+    .room(0.5)
+    .slow(2)
 )
  -->
       </strudel-repl>

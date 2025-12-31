@@ -3,8 +3,15 @@ import re
 # from langchain_groq import ChatGroq
 from dotenv import load_dotenv
 import anthropic
+import redis
 
 load_dotenv()
+
+redis_client = redis.Redis(
+  host='localhost',
+  port=6379,
+  decode_responses=True
+)
 
 def export(code: str) -> None:
   print(f"Exporting...\n\n{code}")
@@ -18,7 +25,7 @@ def export(code: str) -> None:
       <title>Strudel REPL</title>
     </head>
     <body>
-      <strudel-repl>
+      <strudel-repl autoplay="true" style="width: 100%; height: 100vh;">
         <!-- {strudel_code} -->
       </strudel-repl>
     </body>
@@ -51,7 +58,7 @@ User Query:
 """
 
 shots = """
-  Here you have some examples of Strudel REPL code for different musical patterns:
+  Here you have some examples of Strudel code for different musical patterns:
   <example>
     input: "Create a simple drum pattern."
     output:
@@ -97,8 +104,8 @@ shots = """
 """
 
 query = """
-  Create a full funky song with a groovy rhythm, with some tecno notes and
-  house music changes.
+  Create a full house music pattern with drums, bassline, and synths that
+  captures the essence of classic house music.
 """
 
 messages = [
@@ -116,9 +123,11 @@ response = llm.messages.create(
   temperature=0.1,
 )
 
+
 text = response.content[0].text
 res  = re.search(r"```.+?\n(.+?)```", text, re.DOTALL)
 code = res.group(1)
 
+redis_client.set(response.id, code)
 export(code)
 

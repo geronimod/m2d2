@@ -1,6 +1,8 @@
 {
+  "type": "module",
   "dependencies": {
     "@strudel/web": "^1.2.6",
-    "@tonejs/midi": "^2.0.28"
+    "@tonejs/midi": "^2.0.28",
+    "puppeteer": "^24.34.0"
   }
 }
